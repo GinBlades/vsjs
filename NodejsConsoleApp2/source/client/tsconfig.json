@@ -1,0 +1,8 @@
+﻿{
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "../../build/client",
+    "target": "es5",
+    "module": "system"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "nodejs_console_app2",
+  "version": "0.0.0",
+  "description": "NodejsConsoleApp2",
+  "main": "app.js",
+  "author": {
+    "name": "martins",
+    "email": "polycube@live.com"
+  },
+  "scripts": {
+    "start": "node build/server/app.js"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-tslint": "^5.0.0",
+    "gulp-typescript": "^2.13.0",
+    "tslint": "^3.8.1"
+  }
+}
