@@ -5,10 +5,11 @@
     tsLint = require("gulp-tslint"),
     concat = require("gulp-concat");
 
+
 gulp.task('tsc-server', () => {
     return gulp.src("source/server/**/*.ts")
         .pipe(plumber())
-        .pipe(tsLint())
+        .pipe(tsLint({ configuration: "source/server/tslint.json" }))
         .pipe(tsLint.report("prose", { emitError: false }))
 		.pipe(ts({
         module: "commonjs"

@@ -1,0 +1,10 @@
+{
+  "name": "nodejs_console_app2",
+  "version": false,
+  "dependencies": {},
+  "ambientDependencies": {
+    "express": "registry:dt/express#4.0.0+20160317120654",
+    "morgan": "registry:dt/morgan#1.2.2+20160317120654",
+    "node": "registry:dt/node#4.0.0+20160505172921"
+  }
+}

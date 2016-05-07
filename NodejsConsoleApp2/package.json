@@ -11,12 +11,17 @@
     "start": "node build/server/app.js"
   },
   "dependencies": {
+    "express": "^4.13.4",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-plumber": "^1.1.0",
     "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-tslint": "^5.0.0",
-    "gulp-typescript": "^2.13.0",
-    "tslint": "^3.8.1"
+    "gulp-typescript": "^2.13.3",
+    "morgan": "^1.7.0",
+    "tslint": "^3.9.0"
+  },
+  "devDependencies": {
+    "typings": "^0.8.1"
   }
 }

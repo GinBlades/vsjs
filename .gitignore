@@ -4,3 +4,4 @@ build
 obj
 .vs
 *.dat
+typings
