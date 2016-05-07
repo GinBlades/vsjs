@@ -33,23 +33,33 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="build\server\views\index.jade" />
+    <Content Include="build\server\views\_layout.jade" />
     <Content Include="source\client\tsconfig.json" />
     <Content Include="source\client\tslint.json" />
     <Content Include="source\server\tsconfig.json" />
     <Content Include="source\server\tslint.json" />
+    <Content Include="source\server\views\index.jade" />
+    <Content Include="source\server\views\_layout.jade" />
     <TypeScriptCompile Include="source\client\app.ts" />
     <TypeScriptCompile Include="source\server\app.ts" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
+    <TypeScriptCompile Include="source\server\models\user.ts" />
+    <TypeScriptCompile Include="source\server\routes\main.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="build\server\views\" />
+    <Folder Include="source\server\models\" />
     <Folder Include="source\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\typings\" />
     <Folder Include="Scripts\typings\node\" />
     <Folder Include="source\client\" />
     <Folder Include="source\server\" />
+    <Folder Include="source\server\routes\" />
+    <Folder Include="source\server\views\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Gulpfile.js" />
