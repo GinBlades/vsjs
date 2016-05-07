@@ -50,6 +50,8 @@
     <TypeScriptCompile Include="source\server\routes\main.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="build\" />
+    <Folder Include="build\server\" />
     <Folder Include="build\server\views\" />
     <Folder Include="source\server\models\" />
     <Folder Include="source\" />
