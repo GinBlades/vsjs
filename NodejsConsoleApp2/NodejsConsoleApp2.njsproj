@@ -34,7 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="source\client\tsconfig.json" />
+    <Content Include="source\client\tslint.json" />
     <Content Include="source\server\tsconfig.json" />
+    <Content Include="source\server\tslint.json" />
     <TypeScriptCompile Include="source\client\app.ts" />
     <TypeScriptCompile Include="source\server\app.ts" />
     <Content Include="package.json" />

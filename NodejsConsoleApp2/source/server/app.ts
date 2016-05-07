@@ -1,4 +1,4 @@
-﻿/// <references path="../../typings/main.d.ts" />
+﻿/// <reference path="../../typings/main.d.ts" />
 import express = require("express");
 import morgan = require("morgan");
 let app = express();
