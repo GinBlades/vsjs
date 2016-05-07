@@ -2,9 +2,12 @@
 import path = require("path");
 import express = require("express");
 import morgan = require("morgan");
+import helmet = require("helmet");
+
 let app = express();
 
 app.use(morgan("short"));
+app.use(helmet());
 
 let staticPath = path.join(__dirname, "../client");
 app.use(express.static(staticPath));

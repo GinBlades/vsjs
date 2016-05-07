@@ -5,6 +5,7 @@
   "ambientDependencies": {
     "express": "registry:dt/express#4.0.0+20160317120654",
     "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160322035842",
+    "helmet": "registry:dt/helmet#0.0.0+20160501161936",
     "mime": "registry:dt/mime#0.0.0+20160316155526",
     "morgan": "registry:dt/morgan#1.2.2+20160317120654",
     "node": "registry:dt/node#4.0.0+20160505172921",

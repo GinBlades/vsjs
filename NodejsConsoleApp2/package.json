@@ -22,6 +22,7 @@
     "tslint": "^3.9.0"
   },
   "devDependencies": {
+    "helmet": "^2.0.0",
     "typings": "^0.8.1"
   }
 }
