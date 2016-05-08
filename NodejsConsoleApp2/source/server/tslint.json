@@ -20,11 +20,13 @@
     "no-unused-expression": true,
     "no-unused-variable": true,
     "no-use-before-declare": true,
+    "no-trailing-whitespace": true,
+    "no-var-keyword": true,
+    "no-var-requires": true,
     "quotemark": [ "double" ],
     "semicolon": [ "always" ],
     "trailing-comma": [ "always" ],
     "triple-equals": true,
-    "no-trailing-whitespace": true,
     "whitespace": [ true ]
   }
 }

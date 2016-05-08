@@ -44,4 +44,4 @@ userSchema.methods.checkPassword = function (guess, done) {
 };
 
 let User = mongoose.model("User", userSchema);
-module.exports = User;
+export = User;

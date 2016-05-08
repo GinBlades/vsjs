@@ -1,6 +1,6 @@
 ﻿import express = require("express");
 import passport = require("passport");
-var User = require("../models/user");
+import User = require("../models/user");
 let router = express.Router();
 
 // Set local variables for use in all routes
@@ -61,4 +61,4 @@ router.post("/signup", (req, res, next) => {
         failureFlash: true
 }));
 
-module.exports = router;
+export = router;
