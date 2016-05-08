@@ -26,6 +26,7 @@
     "jade": "^1.11.0",
     "mongoose": "^4.4.15",
     "morgan": "^1.7.0",
+    "passport": "^0.3.2",
     "tslint": "^3.9.0"
   },
   "devDependencies": {

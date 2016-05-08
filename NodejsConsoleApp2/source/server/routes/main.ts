@@ -1,4 +1,5 @@
 ﻿import express = require("express");
+import passport = require("passport");
 var User = require("../models/user");
 let router = express.Router();
 
@@ -10,6 +11,18 @@ router.use((req, res, next) => {
     next();
 });
 
+router.get("/users/:username", (req, res, next) => {
+    User.findOne({ username: req.params.username }, (err, user) => {
+        if (err) {
+            return next(err);
+        }
+        if (!User) {
+            return next(404);
+        }
+        res.render("profile", { user: user });
+    });
+});
+
 router.get("/", (req, res, next) => {
     User.find()
         .sort({ createdAt: "descending" })
@@ -18,5 +31,34 @@ router.get("/", (req, res, next) => {
             res.render("index", { users: users });
      });
 });
+
+router.get("/signup", (req, res) => {
+    res.render("signup");
+});
+
+router.post("/signup", (req, res, next) => {
+    let username = req.body.username;
+    let password = req.body.password;
+
+    User.findOne({ username: username }, (err, user) => {
+        if (err) {
+            return next(err);
+        }
+        if (user) {
+            req.flash("error", "User already exists");
+            return res.redirect("/signup");
+        }
+
+        let newUser = new User({
+            username: username,
+            password: password
+        });
+        newUser.save(next);
+    });
+}, passport.authenticate("login", {
+        successRedirect: "/",
+        failureRedirect: "/signup",
+        failureFlash: true
+}));
 
 module.exports = router;

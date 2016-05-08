@@ -1,0 +1,10 @@
+﻿extends ./_layout.jade
+block content
+    h1 Sign up
+
+    form(action="/signup", method="post")
+        input(name="username", type="text", class="form-control",
+            placeholder="Username", required, autofocus)
+        input(name="password", type="password", class="form-control",
+            placeholder="Password", required)
+        input.btn.btn-primary.btn-block(type="submit", value="Sign up")

@@ -31,9 +31,14 @@ gulp.task('tsc-client', () => {
 
 gulp.task("tsc", ["tsc-client", "tsc-server"]);
 
+gulp.task("copyViews", () => {
+    return gulp.src("source/server/views/**/*.jade")
+        .pipe(gulp.dest("./build/server/views"));
+});
+
 gulp.task("watch", () => {
     gulp.watch("./source/server/**/*.ts", ["tsc-server"]);
     gulp.watch("./source/client/**/*.ts", ["tsc-client"]);
 });
 
-gulp.task("default", ["watch", "tsc"]);
+gulp.task("default", ["watch", "tsc", "copyViews"]);

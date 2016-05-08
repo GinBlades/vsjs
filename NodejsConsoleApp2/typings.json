@@ -15,6 +15,7 @@
     "mongoose": "github:Ginblades/fake-typings/mongoose.d.ts",
     "morgan": "registry:dt/morgan#1.2.2+20160317120654",
     "node": "registry:dt/node#4.0.0+20160505172921",
+    "passport": "registry:dt/passport#0.2.0+20160317120654",
     "serve-static": "registry:dt/serve-static#0.0.0+20160501131543"
   }
 }
