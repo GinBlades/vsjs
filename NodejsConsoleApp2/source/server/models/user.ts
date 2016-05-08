@@ -3,18 +3,18 @@ import bcrypt = require("bcrypt-nodejs");
 const SALT_FACTOR = 10;
 
 let userSchema = mongoose.Schema({
-    username: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
+    bio: String,
     createdAt: { type: Date, default: Date.now },
     displayName: String,
-    bio: String
+    password: { type: String, required: true },
+    username: { type: String, required: true, unique: true }
 });
 
 userSchema.methods.name = function() {
     return this.displayName || this.username;
 };
 
-let noop = () => { };
+let noop = () => { return undefined; };
 
 // a pre-save function
 userSchema.pre("save", function (done) {

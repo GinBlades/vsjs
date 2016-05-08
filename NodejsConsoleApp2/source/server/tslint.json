@@ -1,5 +1,30 @@
 {
-    "rules": {
-        "class-name": true
-    }
+  "rules": {
+    "align": [ true ],
+    "class-name": true,
+    "comment-format": [ true ],
+    "curly": true,
+    "indent": [ true ],
+    "max-line-length": [ true, 140 ],
+    "member-access": true,
+    "member-ordering": [ true ],
+    "no-consecutive-blank-lines": true,
+    "no-construct": true,
+    "no-duplicate-key": true,
+    "no-duplicate-variable": true,
+    "no-console": [ true ],
+    "no-empty": true,
+    "no-eval": true,
+    "no-internal-module": true,
+    "no-unreachable": true,
+    "no-unused-expression": true,
+    "no-unused-variable": true,
+    "no-use-before-declare": true,
+    "quotemark": [ "double" ],
+    "semicolon": [ "always" ],
+    "trailing-comma": [ "always" ],
+    "triple-equals": true,
+    "no-trailing-whitespace": true,
+    "whitespace": [ true ]
+  }
 }

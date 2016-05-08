@@ -1,5 +1,5 @@
 ﻿import express = require("express");
-import User = require("../models/user");
+var User = require("../models/user");
 let router = express.Router();
 
 // Set local variables for use in all routes
