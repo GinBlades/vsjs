@@ -8,11 +8,14 @@ import bodyParser = require("body-parser");
 import cookieParser = require("cookie-parser");
 import session = require("express-session");
 import flash = require("connect-flash");
+import passport = require("passport");
+import setupPassport = require("./setuppassport");
 import routes = require("./routes/main");
 
 let app = express();
 
 mongoose.connect("mongodb://localhost:27017/test");
+setupPassport();
 
 app.set("port", process.env.PORT || 3000);
 app.set("views", path.join(__dirname, "views"));
@@ -32,6 +35,8 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/", routes);
 
