@@ -39,6 +39,7 @@ gulp.task("copyViews", () => {
 gulp.task("watch", () => {
     gulp.watch("./source/server/**/*.ts", ["tsc-server"]);
     gulp.watch("./source/client/**/*.ts", ["tsc-client"]);
+    gulp.watch("./source/server/views/**/*.jade", ["copyViews"]);
 });
 
 gulp.task("default", ["watch", "tsc", "copyViews"]);

@@ -10,7 +10,9 @@ import session = require("express-session");
 import flash = require("connect-flash");
 import passport = require("passport");
 import setupPassport = require("./setuppassport");
+
 import routes = require("./routes/main");
+import users = require("./routes/users");
 
 let app = express();
 
@@ -38,6 +40,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use("/users", users);
 app.use("/", routes);
 
 app.listen(app.get("port"), () => {

@@ -35,17 +35,17 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="build\server\views\index.jade" />
-    <Content Include="build\server\views\_layout.jade" />
     <Content Include="source\client\tsconfig.json" />
     <Content Include="source\client\tslint.json" />
     <Content Include="source\server\tsconfig.json" />
     <Content Include="source\server\tslint.json" />
-    <Content Include="source\server\views\edit.jade" />
+    <Content Include="source\server\views\about.jade" />
+    <Content Include="source\server\views\contact.jade" />
+    <Content Include="source\server\views\users\edit.jade" />
     <Content Include="source\server\views\index.jade" />
-    <Content Include="source\server\views\login.jade" />
-    <Content Include="source\server\views\profile.jade" />
-    <Content Include="source\server\views\signup.jade" />
+    <Content Include="source\server\views\sessions\login.jade" />
+    <Content Include="source\server\views\users\profile.jade" />
+    <Content Include="source\server\views\sessions\signup.jade" />
     <Content Include="source\server\views\_layout.jade" />
     <TypeScriptCompile Include="source\client\app.ts" />
     <TypeScriptCompile Include="source\server\app.ts" />
@@ -54,12 +54,10 @@
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="source\server\models\user.ts" />
     <TypeScriptCompile Include="source\server\routes\main.ts" />
+    <TypeScriptCompile Include="source\server\routes\users.ts" />
     <TypeScriptCompile Include="source\server\setuppassport.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="build\" />
-    <Folder Include="build\server\" />
-    <Folder Include="build\server\views\" />
     <Folder Include="source\server\models\" />
     <Folder Include="source\" />
     <Folder Include="Scripts\" />
@@ -69,6 +67,8 @@
     <Folder Include="source\server\" />
     <Folder Include="source\server\routes\" />
     <Folder Include="source\server\views\" />
+    <Folder Include="source\server\views\users\" />
+    <Folder Include="source\server\views\sessions\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Gulpfile.js" />

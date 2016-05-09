@@ -1,25 +1,32 @@
 ﻿doctype html
 html
-  head
-    meta(charset="utf-8")
-    title Learn About Me
-    link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
-  body
-    .navbar.navbar-default.navbar-static-top(role="navigation")
-        .container
-            .navbar-header
-                a.navbar-brand(href="/") Learn About Me
-            ul.nav.navbar-nav.navbar-right
-                if currentUser
+    head
+        meta(charset="utf-8")
+        title Learn About Me
+        link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+    body
+        .navbar.navbar-default.navbar-static-top(role="navigation")
+            .container
+                .navbar-header
+                    a.navbar-brand(href="/") The Blog
+                ul.nav.navbar-nav
                     li
-                        a(href="/edit") Hello, #{ currentUser.name() }
+                        a(href="/posts") Posts
                     li
-                        a(href="/logout") Log out
-                else
+                        a(href="/about") About
                     li
-                        a(href="/login") Log in
-                    li
-                        a(href="/signup") Sign up
+                        a(href="/contact") Contact
+                ul.nav.navbar-nav.navbar-right
+                    if currentUser
+                        li
+                            a(href="/admin") Admin
+                        li
+                            a(href="/logout") Log out
+                    else
+                        li
+                            a(href="/login") Log in
+                        li
+                            a(href="/signup") Sign up
         .container
             each error in errors
                 .alert.alert-danger(role="alert")= error

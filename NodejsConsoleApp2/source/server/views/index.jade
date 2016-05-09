@@ -1,9 +1,30 @@
 ﻿extends ./_layout.jade
 block content
-    h1 Welcome to Learn About Me!
-    each user in users
-        .panel.panel-default
-            .panel-heading
-                a(href="/users/#{user.username}")= user.name()
-            if user.bio
-                .panel-body= user.bio
+    h1 The Blog
+    .row
+        .col-md-9
+            .panel.panel-default
+                .panel-heading
+                    h2.panel-title Post Title
+                .panel-body
+                    p Post Excerpt
+            .panel.panel-default
+                .panel-heading
+                    h2.panel-title Post Title
+                .panel-body
+                    p Post Excerpt
+        .col-md-3
+            .panel.panel-default
+                .panel-heading
+                    h2.panel-title Recent Comment
+                .panel-body
+                    ul
+                        li Comment 1
+                        li Comment 2
+            .panel.panel-default
+                .panel-heading
+                    h2.panel-title Twitter Feed
+                .panel-body
+                    ul
+                        li Comment 1
+                        li Comment 2
