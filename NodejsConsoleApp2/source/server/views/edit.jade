@@ -3,7 +3,7 @@ block content
     h1 Edit your profile
 
     form(action="/edit", method="post")
-        input.form-control(name="displayname", type="text",
+        input.form-control(name="displayName", type="text",
             placeholder="Display name", value=(currentUser.displayName || ""))
         textarea.form-control(name="bio", placeholder="Tell us about yourself!")= currentUser.bio || ""
         input.btn.btn-primary.btn-block(type="submit", value="Update")

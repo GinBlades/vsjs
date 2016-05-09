@@ -97,4 +97,9 @@ router.post("/signup", (req, res, next) => {
         failureFlash: true
 }));
 
+router.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
+});
+
 export = router;
