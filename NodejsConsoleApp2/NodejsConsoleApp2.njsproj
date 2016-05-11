@@ -54,6 +54,7 @@
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="source\server\models\user.ts" />
     <TypeScriptCompile Include="source\server\routes\main.ts" />
+    <TypeScriptCompile Include="source\server\routes\sessions.ts" />
     <TypeScriptCompile Include="source\server\routes\users.ts" />
     <TypeScriptCompile Include="source\server\setuppassport.ts" />
   </ItemGroup>

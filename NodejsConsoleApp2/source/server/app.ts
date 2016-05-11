@@ -12,6 +12,7 @@ import passport = require("passport");
 import setupPassport = require("./setuppassport");
 
 import routes = require("./routes/main");
+import sessions = require("./routes/sessions");
 import users = require("./routes/users");
 
 let app = express();
@@ -41,6 +42,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/users", users);
+app.use("/sessions", sessions);
 app.use("/", routes);
 
 app.listen(app.get("port"), () => {

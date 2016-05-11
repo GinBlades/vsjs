@@ -1,7 +1,7 @@
 ﻿extends ../_layout.jade
 
 if currentUser && currentUser.id == user.id
-    a.pull-right(href="/edit") Edit your profile
+    a.pull-right(href="/users/edit") Edit your profile
 
 h1= user.name
 h2 Joined on #{ user.createdat }

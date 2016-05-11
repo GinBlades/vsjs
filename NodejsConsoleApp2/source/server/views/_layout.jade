@@ -21,12 +21,12 @@ html
                         li
                             a(href="/admin") Admin
                         li
-                            a(href="/logout") Log out
+                            a(href="/sessions/logout") Log out
                     else
                         li
-                            a(href="/login") Log in
+                            a(href="/sessions/login") Log in
                         li
-                            a(href="/signup") Sign up
+                            a(href="/sessions/signup") Sign up
         .container
             each error in errors
                 .alert.alert-danger(role="alert")= error
