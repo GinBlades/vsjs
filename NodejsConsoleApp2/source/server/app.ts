@@ -14,6 +14,7 @@ import setupPassport = require("./setuppassport");
 import routes = require("./routes/main");
 import sessions = require("./routes/sessions");
 import users = require("./routes/users");
+import admin = require("./routes/admin");
 
 let app = express();
 
@@ -41,6 +42,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use("/admin", admin);
 app.use("/users", users);
 app.use("/sessions", sessions);
 app.use("/", routes);

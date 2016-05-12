@@ -40,6 +40,8 @@
     <Content Include="source\server\tsconfig.json" />
     <Content Include="source\server\tslint.json" />
     <Content Include="source\server\views\about.jade" />
+    <Content Include="source\server\views\admin\index.jade" />
+    <Content Include="source\server\views\admin\_layout.jade" />
     <Content Include="source\server\views\contact.jade" />
     <Content Include="source\server\views\users\edit.jade" />
     <Content Include="source\server\views\index.jade" />
@@ -53,6 +55,7 @@
     <Content Include="README.md" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="source\server\models\user.ts" />
+    <TypeScriptCompile Include="source\server\routes\admin.ts" />
     <TypeScriptCompile Include="source\server\routes\main.ts" />
     <TypeScriptCompile Include="source\server\routes\sessions.ts" />
     <TypeScriptCompile Include="source\server\routes\users.ts" />
@@ -67,7 +70,9 @@
     <Folder Include="source\client\" />
     <Folder Include="source\server\" />
     <Folder Include="source\server\routes\" />
+    <Folder Include="source\server\routes\admin\" />
     <Folder Include="source\server\views\" />
+    <Folder Include="source\server\views\admin\" />
     <Folder Include="source\server\views\users\" />
     <Folder Include="source\server\views\sessions\" />
   </ItemGroup>
