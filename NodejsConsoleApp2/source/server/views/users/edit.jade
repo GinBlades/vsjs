@@ -1,9 +1,9 @@
 ﻿extends ../_layout.jade
 block content
-    h1 Edit your profile
+    h1 Edit user profile
 
-    form(action="/users/edit", method="post")
+    form(action="/users/#{user._id}/edit", method="post")
         input.form-control(name="displayName", type="text",
-            placeholder="Display name", value=(currentUser.displayName || ""))
-        textarea.form-control(name="bio", placeholder="Tell us about yourself!")= currentUser.bio || ""
+            placeholder="Display name", value=(user.displayName || ""))
+        textarea.form-control(name="bio", placeholder="Tell us about this user")= user.bio || ""
         input.btn.btn-primary.btn-block(type="submit", value="Update")

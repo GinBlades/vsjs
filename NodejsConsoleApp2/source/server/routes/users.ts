@@ -19,23 +19,35 @@ router.use((req, res, next) => {
     next();
 });
 
-router.get("/:username", (req, res, next) => {
-    User.findOne({ username: req.params.username }, (err, user) => {
+router.get("/new", (req, res, next) => {
+    res.render("users/new");
+});
+
+router.get("/:id", ensureAuthenticated, (req, res, next) => {
+    User.findOne({ _id: req.params.id }, (err, user) => {
         if (err) {
             return next(err);
         }
         if (!User) {
             return next(404);
         }
-        res.render("users/profile", { user: user });
+        res.render("users/show", { user: user });
     });
 });
 
-router.get("/edit", ensureAuthenticated, (req, res) => {
-    res.render("users/edit");
+router.get("/:id/edit", ensureAuthenticated, (req, res, next) => {
+    User.findOne({ _id: req.params.id }, (err, user) => {
+        if (err) {
+            return next(err);
+        }
+        if (!User) {
+            return next(404);
+        }
+        res.render("users/edit", { user: user });
+    });
 });
 
-router.post("/edit", ensureAuthenticated, (req, res, next) => {
+router.post("/:id/edit", ensureAuthenticated, (req, res, next) => {
     req.user.displayName = req.body.displayName;
     req.user.bio = req.body.bio;
     req.user.save((err) => {
@@ -48,12 +60,16 @@ router.post("/edit", ensureAuthenticated, (req, res, next) => {
     });
 });
 
+router.get("/:id/delete", (req, res, next) => {
+    res.redirect("/admin/users");
+});
+
 router.get("/", (req, res, next) => {
     User.find()
         .sort({ createdAt: "descending" })
         .exec((err, users) => {
             if (err) { return next(err); }
-            res.render("index", { users: users });
+            res.render("users/index", { users: users });
         });
 });
 

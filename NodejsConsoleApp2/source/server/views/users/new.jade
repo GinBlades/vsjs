@@ -1,0 +1,9 @@
+﻿extends ../_layout.jade
+block content
+    h1 New user profile
+
+    form(action="/users", method="post")
+        input.form-control(name="displayName", type="text",
+            placeholder="Display name")
+        textarea.form-control(name="bio", placeholder="Tell us about this user")
+        input.btn.btn-primary.btn-block(type="submit", value="Update")

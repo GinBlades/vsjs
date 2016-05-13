@@ -1,0 +1,29 @@
+﻿extends ../admin/_layout.jade
+block content
+    .row
+        .col-md-9
+            h1 Users
+        .col-md-3
+            a.pull-right.btn.btn-primary(href="/admin/users/new") Add User
+    .row
+        .col-md-6
+            table.table.table-striped
+                thead
+                    tr
+                        th Username
+                        th Email
+                        th
+                tbody
+                    each user in users
+                        tr
+                            td
+                                a(href="/admin/users/#{user._id}")= user.username
+                            td= user.email
+                            td
+                                a(href="/admin/users/#{user._id}/edit") Edit
+                                | / 
+                                a(href="/admin/users/#{user._id}/delete") Delete
+        .col-md-6
+            .panel.panel-default
+                .panel-heading
+                    h2.panel-title Search Users

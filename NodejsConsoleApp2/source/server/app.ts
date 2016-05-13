@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
     resave: true,
-    secret: "secretkey",
+    secret: "sbtvey7HPkSjuC6EyMu9Kw",
     saveUninitialized: true
 }));
 app.use(flash());
@@ -43,7 +43,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/admin", admin);
-app.use("/users", users);
+app.use("/admin/users", users);
 app.use("/sessions", sessions);
 app.use("/", routes);
 

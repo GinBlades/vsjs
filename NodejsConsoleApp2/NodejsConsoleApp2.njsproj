@@ -46,7 +46,9 @@
     <Content Include="source\server\views\users\edit.jade" />
     <Content Include="source\server\views\index.jade" />
     <Content Include="source\server\views\sessions\login.jade" />
-    <Content Include="source\server\views\users\profile.jade" />
+    <Content Include="source\server\views\users\index.jade" />
+    <Content Include="source\server\views\users\new.jade" />
+    <Content Include="source\server\views\users\show.jade" />
     <Content Include="source\server\views\sessions\signup.jade" />
     <Content Include="source\server\views\_layout.jade" />
     <TypeScriptCompile Include="source\client\app.ts" />
