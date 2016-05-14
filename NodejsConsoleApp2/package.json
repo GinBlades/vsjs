@@ -29,6 +29,7 @@
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "rx": "^4.1.0",
     "tslint": "^3.9.0"
   },
   "devDependencies": {

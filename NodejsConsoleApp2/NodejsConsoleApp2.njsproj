@@ -55,7 +55,6 @@
     <TypeScriptCompile Include="source\server\app.ts" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="source\server\models\user.ts" />
     <TypeScriptCompile Include="source\server\routes\admin.ts" />
     <TypeScriptCompile Include="source\server\routes\main.ts" />
@@ -66,9 +65,6 @@
   <ItemGroup>
     <Folder Include="source\server\models\" />
     <Folder Include="source\" />
-    <Folder Include="Scripts\" />
-    <Folder Include="Scripts\typings\" />
-    <Folder Include="Scripts\typings\node\" />
     <Folder Include="source\client\" />
     <Folder Include="source\server\" />
     <Folder Include="source\server\routes\" />

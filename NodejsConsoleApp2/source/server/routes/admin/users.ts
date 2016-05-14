@@ -1,4 +1,5 @@
 ﻿import express = require("express");
+import Rx = require("rx");
 import User = require("../../models/user");
 let router = express.Router();
 
@@ -9,6 +10,22 @@ let ensureAuthenticated = (req, res, next) => {
         req.flash("info", "You must be logged in to see this page.");
         res.redirect("/sessions/login");
     }
+};
+
+let getUser = (id: number) => {
+    return Rx.Observable.create((observer) => {
+        User.find({ _id: id }, (err, user) => {
+            if (err) {
+                observer.onError(err);
+            }
+            if (!user) {
+                observer.onError(404);
+            } else {
+                observer.onNext(user);
+                observer.onCompleted();
+            }
+        });
+    });
 };
 
 // Set local variables for use in all routes
@@ -24,27 +41,35 @@ router.get("/new", (req, res, next) => {
 });
 
 router.get("/:id", ensureAuthenticated, (req, res, next) => {
-    User.findOne({ _id: req.params.id }, (err, user) => {
-        if (err) {
-            return next(err);
-        }
-        if (!User) {
-            return next(404);
-        }
-        res.render("admin/users/show", { user: user });
-    });
+    getUser(req.params.id).subscribe(
+        (user) => { res.render("admin/users/show", { user: user }); },
+        (err) => { return next(err); }
+    );
+    // User.findOne({ _id: req.params.id }, (err, user) => {
+    //     if (err) {
+    //         return next(err);
+    //     }
+    //     if (!User) {
+    //         return next(404);
+    //     }
+    //     res.render("admin/users/show", { user: user });
+    // });
 });
 
 router.get("/:id/edit", ensureAuthenticated, (req, res, next) => {
-    User.findOne({ _id: req.params.id }, (err, user) => {
-        if (err) {
-            return next(err);
-        }
-        if (!User) {
-            return next(404);
-        }
-        res.render("admin/users/edit", { user: user });
-    });
+    getUser(req.params.id).subscribe(
+        (user) => { res.render("admin/users/edit", { user: user }); },
+        (err) => { return next(err); }
+    );
+    // User.findOne({ _id: req.params.id }, (err, user) => {
+    //     if (err) {
+    //         return next(err);
+    //     }
+    //     if (!User) {
+    //         return next(404);
+    //     }
+    //     res.render("admin/users/edit", { user: user });
+    // });
 });
 
 router.post("/:id/edit", ensureAuthenticated, (req, res, next) => {

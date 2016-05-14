@@ -17,6 +17,7 @@
     "node": "registry:dt/node#4.0.0+20160505172921",
     "passport": "registry:dt/passport#0.2.0+20160317120654",
     "passport-local": "registry:dt/passport-local#0.0.0+20160316155526",
+    "rx.all": "github:Reactive-Extensions/RxJS/ts/rx.all.d.ts#12267b7",
     "serve-static": "registry:dt/serve-static#0.0.0+20160501131543"
   }
 }
