@@ -1,4 +1,5 @@
-﻿var gulp = require("gulp"),
+﻿/// <binding BeforeBuild='build' />
+var gulp = require("gulp"),
     plumber = require("gulp-plumber"),
     sourceMaps = require("gulp-sourcemaps"),
     ts = require("gulp-typescript"),
@@ -42,4 +43,6 @@ gulp.task("watch", () => {
     gulp.watch("./source/server/views/**/*.jade", ["copyViews"]);
 });
 
-gulp.task("default", ["watch", "tsc", "copyViews"]);
+gulp.task("build", ["tsc", "copyViews"]);
+
+gulp.task("default", ["watch", "build"]);

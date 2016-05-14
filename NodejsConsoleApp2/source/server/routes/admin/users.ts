@@ -1,5 +1,5 @@
 ﻿import express = require("express");
-import User = require("../models/user");
+import User = require("../../models/user");
 let router = express.Router();
 
 let ensureAuthenticated = (req, res, next) => {
@@ -20,7 +20,7 @@ router.use((req, res, next) => {
 });
 
 router.get("/new", (req, res, next) => {
-    res.render("users/new");
+    res.render("admin/users/new");
 });
 
 router.get("/:id", ensureAuthenticated, (req, res, next) => {
@@ -31,7 +31,7 @@ router.get("/:id", ensureAuthenticated, (req, res, next) => {
         if (!User) {
             return next(404);
         }
-        res.render("users/show", { user: user });
+        res.render("admin/users/show", { user: user });
     });
 });
 
@@ -43,7 +43,7 @@ router.get("/:id/edit", ensureAuthenticated, (req, res, next) => {
         if (!User) {
             return next(404);
         }
-        res.render("users/edit", { user: user });
+        res.render("admin/users/edit", { user: user });
     });
 });
 
@@ -56,7 +56,7 @@ router.post("/:id/edit", ensureAuthenticated, (req, res, next) => {
             return;
         }
         req.flash("info", "Profile updated!");
-        res.redirect("/edit");
+        res.redirect("admin/users");
     });
 });
 
@@ -69,7 +69,7 @@ router.get("/", (req, res, next) => {
         .sort({ createdAt: "descending" })
         .exec((err, users) => {
             if (err) { return next(err); }
-            res.render("users/index", { users: users });
+            res.render("admin/users/index", { users: users });
         });
 });
 

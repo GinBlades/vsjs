@@ -13,7 +13,7 @@ import setupPassport = require("./setuppassport");
 
 import routes = require("./routes/main");
 import sessions = require("./routes/sessions");
-import users = require("./routes/users");
+import users = require("./routes/admin/users");
 import admin = require("./routes/admin");
 
 let app = express();

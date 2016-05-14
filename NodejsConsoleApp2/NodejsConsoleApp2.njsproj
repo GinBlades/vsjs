@@ -43,12 +43,12 @@
     <Content Include="source\server\views\admin\index.jade" />
     <Content Include="source\server\views\admin\_layout.jade" />
     <Content Include="source\server\views\contact.jade" />
-    <Content Include="source\server\views\users\edit.jade" />
+    <Content Include="source\server\views\admin\users\edit.jade" />
     <Content Include="source\server\views\index.jade" />
     <Content Include="source\server\views\sessions\login.jade" />
-    <Content Include="source\server\views\users\index.jade" />
-    <Content Include="source\server\views\users\new.jade" />
-    <Content Include="source\server\views\users\show.jade" />
+    <Content Include="source\server\views\admin\users\index.jade" />
+    <Content Include="source\server\views\admin\users\new.jade" />
+    <Content Include="source\server\views\admin\users\show.jade" />
     <Content Include="source\server\views\sessions\signup.jade" />
     <Content Include="source\server\views\_layout.jade" />
     <TypeScriptCompile Include="source\client\app.ts" />
@@ -60,7 +60,7 @@
     <TypeScriptCompile Include="source\server\routes\admin.ts" />
     <TypeScriptCompile Include="source\server\routes\main.ts" />
     <TypeScriptCompile Include="source\server\routes\sessions.ts" />
-    <TypeScriptCompile Include="source\server\routes\users.ts" />
+    <TypeScriptCompile Include="source\server\routes\admin\users.ts" />
     <TypeScriptCompile Include="source\server\setuppassport.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -75,7 +75,7 @@
     <Folder Include="source\server\routes\admin\" />
     <Folder Include="source\server\views\" />
     <Folder Include="source\server\views\admin\" />
-    <Folder Include="source\server\views\users\" />
+    <Folder Include="source\server\views\admin\users\" />
     <Folder Include="source\server\views\sessions\" />
   </ItemGroup>
   <ItemGroup>
