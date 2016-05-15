@@ -11,14 +11,16 @@ block content
                 thead
                     tr
                         th Username
-                        th Email
+                        th Display Name
+                        th Joined At
                         th
                 tbody
                     each user in users
                         tr
                             td
                                 a(href="/admin/users/#{user._id}")= user.username
-                            td= user.email
+                            td= user.displayName
+                            td= user.createdAt
                             td
                                 a(href="/admin/users/#{user._id}/edit") Edit
                                 | / 

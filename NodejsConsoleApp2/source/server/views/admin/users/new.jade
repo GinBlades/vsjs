@@ -1,9 +1,21 @@
 ﻿extends ../_layout.jade
 block content
-    h1 New user profile
+    h1 New User
 
     form(action="/admin/users", method="post")
-        input.form-control(name="displayName", type="text",
-            placeholder="Display name")
-        textarea.form-control(name="bio", placeholder="Tell us about this user")
-        input.btn.btn-primary.btn-block(type="submit", value="Update")
+        .form-group
+            label(for="displayName") Display Name
+            input.form-control(name="displayName", type="text",
+                id="displayName", placeholder="Display name")
+        .form-group
+            label(for="username") Username
+            input.form-control(name="username", type="text",
+                id="username", placeholder="Username")
+        .form-group
+            label(for="password") Password
+            input.form-control(name="password", type="password",
+                id="password", placeholder="password")
+        .form-group
+            label(for="bio") Bio
+            textarea.form-control(name="bio", placeholder="Tell us about this user")
+        input.btn.btn-primary.btn-block(type="submit", value="Save")

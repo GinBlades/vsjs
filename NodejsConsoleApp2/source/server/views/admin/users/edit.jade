@@ -3,7 +3,19 @@ block content
     h1 Edit user profile
 
     form(action="/admin/users/#{user._id}/edit", method="post")
-        input.form-control(name="displayName", type="text",
-            placeholder="Display name", value=(user.displayName || ""))
-        textarea.form-control(name="bio", placeholder="Tell us about this user")= user.bio || ""
+        .form-group
+            label(for="displayName") Display Name
+            input.form-control(name="displayName", type="text",
+                id="displayName", placeholder="Display name", value=user.displayName)
+        .form-group
+            label(for="username") Username
+            input.form-control(name="username", type="text",
+                id="username", placeholder="Username", value=user.username)
+        .form-group
+            label(for="password") Password
+            input.form-control(name="password", type="password",
+                id="password", placeholder="password", value=user.password)
+        .form-group
+            label(for="bio") Bio
+            textarea.form-control(name="bio", placeholder="Tell us about this user")= user.bio
         input.btn.btn-primary.btn-block(type="submit", value="Update")

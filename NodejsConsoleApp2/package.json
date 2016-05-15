@@ -33,6 +33,7 @@
     "tslint": "^3.9.0"
   },
   "devDependencies": {
+    "nodemon": "^1.9.2",
     "typings": "^0.8.1"
   }
 }

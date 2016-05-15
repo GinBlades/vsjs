@@ -2,6 +2,14 @@
 import bcrypt = require("bcrypt-nodejs");
 const SALT_FACTOR = 10;
 
+interface UserProperties {
+    bio: string;
+    createdAt: Date;
+    displayName: string;
+    password: string;
+    username: string;
+}
+
 let userSchema = mongoose.Schema({
     bio: String,
     createdAt: { type: Date, default: Date.now },

@@ -14,7 +14,8 @@ let ensureAuthenticated = (req, res, next) => {
 
 let getUser = (id: number) => {
     return Rx.Observable.create((observer) => {
-        User.find({ _id: id }, (err, user) => {
+        User.findOne({ _id: id }, (err, user) => {
+            console.log(user);
             if (err) {
                 observer.onError(err);
             }
@@ -28,6 +29,19 @@ let getUser = (id: number) => {
     });
 };
 
+let saveUser = (user) => {
+    return Rx.Observable.create((observer) => {
+        user.save((err, user) => {
+            if (err) {
+                observer.onError(err);
+                return;
+            }
+            observer.onNext(user);
+            observer.onCompleted();
+        });
+    });
+}
+
 // Set local variables for use in all routes
 router.use((req, res, next) => {
     res.locals.currentUser = req.user;
@@ -36,57 +50,55 @@ router.use((req, res, next) => {
     next();
 });
 
-router.get("/new", (req, res, next) => {
+router.get("/new", ensureAuthenticated, (req, res, next) => {
     res.render("admin/users/new");
 });
 
-router.get("/:id", ensureAuthenticated, (req, res, next) => {
+router.post("/", ensureAuthenticated, (req, res, next) => {
+    let newUser = new User(req.body);
+    saveUser(newUser).subscribe(
+        (user: any) => { res.redirect(`/admin/users/${user._id}`); },
+        (err) => { return next(err) }
+    );
+})
+
+router.get("/:id", (req, res, next) => {
     getUser(req.params.id).subscribe(
         (user) => { res.render("admin/users/show", { user: user }); },
         (err) => { return next(err); }
     );
-    // User.findOne({ _id: req.params.id }, (err, user) => {
-    //     if (err) {
-    //         return next(err);
-    //     }
-    //     if (!User) {
-    //         return next(404);
-    //     }
-    //     res.render("admin/users/show", { user: user });
-    // });
 });
 
-router.get("/:id/edit", ensureAuthenticated, (req, res, next) => {
+router.get("/:id/edit", (req, res, next) => {
     getUser(req.params.id).subscribe(
         (user) => { res.render("admin/users/edit", { user: user }); },
         (err) => { return next(err); }
     );
-    // User.findOne({ _id: req.params.id }, (err, user) => {
-    //     if (err) {
-    //         return next(err);
-    //     }
-    //     if (!User) {
-    //         return next(404);
-    //     }
-    //     res.render("admin/users/edit", { user: user });
-    // });
 });
 
-router.post("/:id/edit", ensureAuthenticated, (req, res, next) => {
-    req.user.displayName = req.body.displayName;
-    req.user.bio = req.body.bio;
-    req.user.save((err) => {
-        if (err) {
-            next(err);
-            return;
-        }
-        req.flash("info", "Profile updated!");
-        res.redirect("admin/users");
-    });
+router.post("/:id/edit", (req, res, next) => {
+    Rx.Observable.create((observer) => {        
+        User.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, user) => {
+            if (err) {
+                observer.onError(err);
+                return;
+            }
+            observer.onNext(user);
+            observer.onCompleted;
+        });
+    }).subscribe(
+        (user: any) => { res.redirect(`/admin/users/${user._id}`); },
+        (err) => { return next(err); }
+    );
 });
 
 router.get("/:id/delete", (req, res, next) => {
-    res.redirect("/admin/users");
+    User.findByIdAndRemove(req.params.id, (err, record) => {
+        if (err) {
+            return next(err);
+        }
+       res.redirect("/admin/users");
+    });
 });
 
 router.get("/", (req, res, next) => {
