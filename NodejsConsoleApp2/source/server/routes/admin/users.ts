@@ -40,7 +40,7 @@ let saveUser = (user) => {
             observer.onCompleted();
         });
     });
-}
+};
 
 // Set local variables for use in all routes
 router.use((req, res, next) => {
@@ -58,9 +58,9 @@ router.post("/", ensureAuthenticated, (req, res, next) => {
     let newUser = new User(req.body);
     saveUser(newUser).subscribe(
         (user: any) => { res.redirect(`/admin/users/${user._id}`); },
-        (err) => { return next(err) }
+        (err) => { return next(err); }
     );
-})
+});
 
 router.get("/:id", (req, res, next) => {
     getUser(req.params.id).subscribe(
@@ -77,14 +77,14 @@ router.get("/:id/edit", (req, res, next) => {
 });
 
 router.post("/:id/edit", (req, res, next) => {
-    Rx.Observable.create((observer) => {        
+    Rx.Observable.create((observer) => {
         User.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, user) => {
             if (err) {
                 observer.onError(err);
                 return;
             }
             observer.onNext(user);
-            observer.onCompleted;
+            observer.onCompleted();
         });
     }).subscribe(
         (user: any) => { res.redirect(`/admin/users/${user._id}`); },

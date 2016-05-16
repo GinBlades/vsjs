@@ -8,7 +8,8 @@
     "email": "polycube@live.com"
   },
   "scripts": {
-    "start": "nodemon build/server/app.js"
+    "start": "nodemon build/server/app.js",
+    "typings": "typings install"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
