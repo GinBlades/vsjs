@@ -1,9 +1,9 @@
 ﻿import passport = require("passport");
 import localStrategy = require("passport-local");
-import User = require("./models/user");
+import * as userModel from "./models/user";
 
 passport.use("login", new localStrategy.Strategy((username, password, done) => {
-    User.findOne({ username: username }, (err, user) => {
+    userModel.User.findOne({ username: username }, (err, user) => {
         if (err) {
             return done(err);
         }
@@ -29,7 +29,7 @@ export = () => {
     });
 
     passport.deserializeUser((id, done) => {
-        User.findById(id, (err, user) => {
+        userModel.User.findById(id, (err, user) => {
             done(err, user);
         });
     });

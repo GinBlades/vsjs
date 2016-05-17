@@ -2,12 +2,22 @@
 import bcrypt = require("bcrypt-nodejs");
 const SALT_FACTOR = 10;
 
-interface UserProperties {
+export interface UserProperties {
     bio: string;
     createdAt: Date;
     displayName: string;
     password: string;
     username: string;
+}
+
+export interface MongooseModel<T> {
+    new(obj: any);
+    findOne: Function;
+    findById: Function;
+    findByIdAndUpdate: Function;
+    findByIdAndRemove: Function;
+    find: Function;
+    save: Function;
 }
 
 let userSchema = mongoose.Schema({
@@ -51,5 +61,4 @@ userSchema.methods.checkPassword = function (guess, done) {
     });
 };
 
-let User = mongoose.model("User", userSchema);
-export = User;
+export let User: MongooseModel<UserProperties> = mongoose.model("User", userSchema);

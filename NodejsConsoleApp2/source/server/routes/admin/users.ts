@@ -1,6 +1,6 @@
 ﻿import express = require("express");
 import Rx = require("rx");
-import User = require("../../models/user");
+import * as userModel from "../../models/user";
 let router = express.Router();
 
 let ensureAuthenticated = (req, res, next) => {
@@ -14,8 +14,7 @@ let ensureAuthenticated = (req, res, next) => {
 
 let getUser = (id: number) => {
     return Rx.Observable.create((observer) => {
-        User.findOne({ _id: id }, (err, user) => {
-            console.log(user);
+        userModel.User.findOne({ _id: id }, (err, user) => {
             if (err) {
                 observer.onError(err);
             }
@@ -55,7 +54,7 @@ router.get("/new", ensureAuthenticated, (req, res, next) => {
 });
 
 router.post("/", ensureAuthenticated, (req, res, next) => {
-    let newUser = new User(req.body);
+    let newUser = new userModel.User(req.body);
     saveUser(newUser).subscribe(
         (user: any) => { res.redirect(`/admin/users/${user._id}`); },
         (err) => { return next(err); }
@@ -78,7 +77,7 @@ router.get("/:id/edit", (req, res, next) => {
 
 router.post("/:id/edit", (req, res, next) => {
     Rx.Observable.create((observer) => {
-        User.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, user) => {
+        userModel.User.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, user) => {
             if (err) {
                 observer.onError(err);
                 return;
@@ -93,7 +92,7 @@ router.post("/:id/edit", (req, res, next) => {
 });
 
 router.get("/:id/delete", (req, res, next) => {
-    User.findByIdAndRemove(req.params.id, (err, record) => {
+    userModel.User.findByIdAndRemove(req.params.id, (err, record) => {
         if (err) {
             return next(err);
         }
@@ -102,7 +101,7 @@ router.get("/:id/delete", (req, res, next) => {
 });
 
 router.get("/", (req, res, next) => {
-    User.find()
+    userModel.User.find()
         .sort({ createdAt: "descending" })
         .exec((err, users) => {
             if (err) { return next(err); }
