@@ -1,6 +1,6 @@
 ﻿import express = require("express");
 import passport = require("passport");
-import * as userModel from "../models/user";
+import { User } from "../models/user";
 let router = express.Router();
 
 // Set local variables for use in all routes
@@ -29,7 +29,7 @@ router.post("/signup", (req, res, next) => {
     let username = req.body.username;
     let password = req.body.password;
 
-    userModel.User.findOne({ username: username }, (err, user) => {
+    User.findOne({ username: username }, (err, user) => {
         if (err) {
             return next(err);
         }
@@ -38,7 +38,7 @@ router.post("/signup", (req, res, next) => {
             return res.redirect("/signup");
         }
 
-        let newUser: userModel.MongooseModel<userModel.UserProperties> = new user.User({
+        let newUser = new User({
             username: username,
             password: password
         });

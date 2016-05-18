@@ -15,6 +15,7 @@ import routes = require("./routes/main");
 import sessions = require("./routes/sessions");
 import users = require("./routes/admin/users");
 import admin = require("./routes/admin");
+import adminPosts = require("./routes/admin/posts");
 
 let app = express();
 
@@ -42,10 +43,29 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/admin", admin);
-app.use("/admin/users", users);
 app.use("/sessions", sessions);
 app.use("/", routes);
+
+app.use((req, res, next) => {
+    if (req.isAuthenticated()) {
+        next();
+    } else {
+        req.flash("info", "You must be logged in to see this page.");
+        res.redirect("/sessions/login");
+    }
+});
+
+// Set local variables for use in all routes
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    res.locals.errors = req.flash("error");
+    res.locals.infos = req.flash("info");
+    next();
+});
+
+app.use("/admin", admin);
+app.use("/admin/users", users);
+app.use("/admin/posts", adminPosts);
 
 app.listen(app.get("port"), () => {
     console.log("Server started on port " + app.get("port"));

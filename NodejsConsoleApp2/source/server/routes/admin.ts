@@ -1,15 +1,6 @@
 ﻿import express = require("express");
 let router = express.Router();
 
-let ensureAuthenticated = (req, res, next) => {
-    if (req.isAuthenticated()) {
-        next();
-    } else {
-        req.flash("info", "You must be logged in to see this page.");
-        res.redirect("/sessions/login");
-    }
-};
-
 // Set local variables for use in all routes
 router.use((req, res, next) => {
     res.locals.currentUser = req.user;
@@ -18,7 +9,7 @@ router.use((req, res, next) => {
     next();
 });
 
-router.get("/", ensureAuthenticated, (_req, res) => {
+router.get("/", (_req, res) => {
     res.render("admin/index");
 });
 
