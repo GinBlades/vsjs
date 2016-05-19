@@ -36,50 +36,51 @@ let savePost = (post) => {
 router.get("/", (req, res, next) => {
     Post.find()
         .sort({ createdAt: "descending" })
-        .exec((err, users) => {
+        .exec((err, posts) => {
             if (err) { return next(err); }
-            res.render("admin/users/index", { users: users });
+            res.render("admin/posts/index", { posts: posts });
         });
 });
 
 router.get("/new", (req, res, next) => {
-    res.render("admin/users/new");
+    res.render("admin/posts/new");
 });
 
 router.post("/", (req, res, next) => {
     let newPost = new Post(req.body);
+    newPost.userId = res.locals.currentUser._id;
     savePost(newPost).subscribe(
-        (user: any) => { res.redirect(`/admin/users/${user._id}`); },
+        (post: any) => { res.redirect(`/admin/posts/${post._id}`); },
         (err) => { return next(err); }
     );
 });
 
 router.get("/:id", (req, res, next) => {
     getPost(req.params.id).subscribe(
-        (user) => { res.render("admin/users/show", { user: user }); },
+        (post) => { res.render("admin/posts/show", { post: post }); },
         (err) => { return next(err); }
     );
 });
 
 router.get("/:id/edit", (req, res, next) => {
     getPost(req.params.id).subscribe(
-        (user) => { res.render("admin/users/edit", { user: user }); },
+        (post) => { res.render("admin/posts/edit", { post: post }); },
         (err) => { return next(err); }
     );
 });
 
 router.post("/:id/edit", (req, res, next) => {
     Rx.Observable.create((observer) => {
-        Post.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, user) => {
+        Post.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, post) => {
             if (err) {
                 observer.onError(err);
                 return;
             }
-            observer.onNext(user);
+            observer.onNext(post);
             observer.onCompleted();
         });
     }).subscribe(
-        (user: any) => { res.redirect(`/admin/users/${user._id}`); },
+        (post: any) => { res.redirect(`/admin/posts/${post._id}`); },
         (err) => { return next(err); }
     );
 });
@@ -89,7 +90,7 @@ router.get("/:id/delete", (req, res, next) => {
         if (err) {
             return next(err);
         }
-       res.redirect("/admin/users");
+       res.redirect("/admin/posts");
     });
 });
 

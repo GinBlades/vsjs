@@ -1,0 +1,34 @@
+﻿extends ../_layout.jade
+block content
+    .row
+        .col-md-9
+            h1 Posts
+        .col-md-3
+            a.pull-right.btn.btn-primary(href="/admin/posts/new") Add User
+    .row
+        .col-md-9
+            table.table.table-striped
+                thead
+                    tr
+                        th User
+                        th Title
+                        th Excerpt
+                        th Publish At
+                        th
+                tbody
+                    each post in posts
+                        tr
+                            td
+                                a(href="/admin/users/#{post.userId}")= post.userId
+                            td
+                                a(href="/admin/posts/#{post._id}")= post.title
+                            td= post.excerpt
+                            td= post.publishedAt
+                            td
+                                a(href="/admin/posts/#{post._id}/edit") Edit
+                                | / 
+                                a(href="/admin/posts/#{post._id}/delete") Delete
+        .col-md-3
+            .panel.panel-default
+                .panel-heading
+                    h2.panel-title Search Posts

@@ -1,0 +1,19 @@
+﻿extends ../_layout.jade
+block content
+    table.table.table-striped
+        tbody
+            tr
+                th User
+                td= post.userId
+            tr
+                th Title
+                td= post.title
+            tr
+                th Excerpt
+                td= post.excerpt
+            tr
+                th Body
+                td= post.body
+            tr
+                th Published At
+                td= post.publishedAt

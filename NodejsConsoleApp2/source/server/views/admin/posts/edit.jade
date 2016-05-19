@@ -1,0 +1,20 @@
+﻿extends ../_layout.jade
+block content
+    h1 Edit Post
+
+    form(action="/admin/posts/#{post._id}/edit", method="post")
+        .form-group
+            label(for="title") Title
+            input.form-control(name="title", type="text",
+                id="title", placeholder="Display name", value=post.title)
+        .form-group
+            label(for="excerpt") Excerpt
+            textarea.form-control(name="excerpt", placeholder="Tell us about this post")= post.excerpt
+        .form-group
+            label(for="body") Body
+            textarea.form-control(name="body", placeholder="Tell us about this post")= post.body
+        .form-group
+            label(for="publishedAt") Published At
+            input.form-control(name="publishedAt", type="datetime-local",
+                id="publishedAt", defaultValue=post.publishedAt)
+        input.btn.btn-primary.btn-block(type="submit", value="Update")

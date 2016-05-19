@@ -1,8 +1,8 @@
 import mongoose = require("mongoose");
-declare var ObjectId: any;
+declare var Objectid: any;
 
 let postSchema = mongoose.Schema({
-    user: ObjectId,
+    userId: mongoose.Schema.Types.ObjectId,
     title: String,
     body: String,
     publishedAt: { type: Date, default: Date.now },

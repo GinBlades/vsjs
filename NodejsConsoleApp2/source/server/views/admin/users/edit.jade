@@ -12,10 +12,6 @@ block content
             input.form-control(name="username", type="text",
                 id="username", placeholder="Username", value=user.username)
         .form-group
-            label(for="password") Password
-            input.form-control(name="password", type="password",
-                id="password", placeholder="password", value=user.password)
-        .form-group
             label(for="bio") Bio
             textarea.form-control(name="bio", placeholder="Tell us about this user")= user.bio
         input.btn.btn-primary.btn-block(type="submit", value="Update")
