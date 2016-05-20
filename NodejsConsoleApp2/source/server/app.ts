@@ -1,4 +1,5 @@
 ﻿/// <reference path="../../typings/main.d.ts" />
+/// <reference path="./interfaces.ts" />
 import path = require("path");
 import express = require("express");
 import morgan = require("morgan");

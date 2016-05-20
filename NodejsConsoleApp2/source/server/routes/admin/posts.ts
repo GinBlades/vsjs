@@ -20,21 +20,21 @@ router.get("/new", (req, res, next) => {
 router.post("/", (req, res, next) => {
     let newPost = new Post.mongooseModel(req.body);
     newPost.userId = res.locals.currentUser._id;
-    Post.savePost(newPost).subscribe(
+    Post.save(newPost).subscribe(
         (post: any) => { res.redirect(`/admin/posts/${post._id}`); },
         (err) => { return next(err); }
     );
 });
 
 router.get("/:id", (req, res, next) => {
-    Post.getPost(req.params.id).subscribe(
+    Post.get(req.params.id).subscribe(
         (post) => { res.render("admin/posts/show", { post: post }); },
         (err) => { return next(err); }
     );
 });
 
 router.get("/:id/edit", (req, res, next) => {
-    Post.getPost(req.params.id).subscribe(
+    Post.get(req.params.id).subscribe(
         (post) => { res.render("admin/posts/edit", { post: post }); },
         (err) => { return next(err); }
     );

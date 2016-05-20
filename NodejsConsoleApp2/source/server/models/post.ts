@@ -1,8 +1,18 @@
 import mongoose = require("mongoose");
-import Rx = require("rx");
+import ModelBase = require("./model_base");
 
 class Post {
-    private static postSchema = () => {
+    public static mongooseModel = mongoose.model("Post", Post.postSchema());
+
+    public static get(id: number) {
+        return ModelBase.get(Post.mongooseModel, id);
+    };
+
+    public static save(post) {
+        return ModelBase.save(post);
+    };
+
+    private static postSchema() {
         return mongoose.Schema({
             userId: mongoose.Schema.Types.ObjectId,
             title: String,
@@ -11,37 +21,6 @@ class Post {
             excerpt: String
         });
     }
-
-    public static mongooseModel = mongoose.model("Post", Post.postSchema());
-
-    public static getPost(id: number) {
-        return Rx.Observable.create((observer) => {
-            Post.mongooseModel().findOne({ _id: id }, (err, post) => {
-                if (err) {
-                    observer.onError(err);
-                }
-                if (!post) {
-                    observer.onError(404);
-                } else {
-                    observer.onNext(post);
-                    observer.onCompleted();
-                }
-            });
-        });
-    };
-
-    public static savePost(post) {
-        return Rx.Observable.create((observer) => {
-            post.save((err, record) => {
-                if (err) {
-                    observer.onError(err);
-                    return;
-                }
-                observer.onNext(record);
-                observer.onCompleted();
-            });
-        });
-    };
 }
 
 export = Post;
