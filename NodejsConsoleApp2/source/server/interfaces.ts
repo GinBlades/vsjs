@@ -6,6 +6,14 @@ interface UserProperties {
     username: string;
 }
 
+interface PostProperties {
+    userId: string;
+    title: string;
+    body: string;
+    publishedAt: Date;
+    excerpt: string;
+}
+
 interface MongooseModel<T> {
     new(obj: any);
     findOne: Function;

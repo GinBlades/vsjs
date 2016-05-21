@@ -66,7 +66,7 @@ app.use((req, res, next) => {
 
 app.use("/admin", admin);
 app.use("/admin/users", users);
-app.use("/admin/posts", adminPosts);
+app.use("/admin/posts", new adminPosts().allRoutes());
 
 app.listen(app.get("port"), () => {
     console.log("Server started on port " + app.get("port"));

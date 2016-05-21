@@ -6,7 +6,7 @@ class User {
     private static saltFactor = 10;
     public static mongooseModel: MongooseModel<UserProperties> = mongoose.model("User", User.userSchema());
 
-    public static get(id: number) {
+    public static get(id: string) {
         return ModelBase.get(User.mongooseModel, id);
     }
 

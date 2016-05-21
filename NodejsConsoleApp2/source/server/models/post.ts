@@ -2,14 +2,18 @@ import mongoose = require("mongoose");
 import ModelBase = require("./model_base");
 
 class Post {
-    public static mongooseModel = mongoose.model("Post", Post.postSchema());
+    public static mongooseModel: MongooseModel<PostProperties> = mongoose.model("Post", Post.postSchema());
 
-    public static get(id: number) {
+    public static get(id: string) {
         return ModelBase.get(Post.mongooseModel, id);
     };
 
     public static save(post) {
         return ModelBase.save(post);
+    };
+
+    public static update(id: string, post: any) {
+        return ModelBase.update(Post.mongooseModel, id, post);
     };
 
     private static postSchema() {
